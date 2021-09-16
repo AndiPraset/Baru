@@ -17,3 +17,16 @@ exports.tampilsemuasiswa = function(req,res){
         }
     });
 };
+
+//meanmpilkan semua data siswa berdasarkan id
+exports.tampilberdasarkanid=function(req,res){
+    let id = req.params.id;
+    connection.query('SELECT * FROM siswa WHERE id_siswa = ?', [id],
+        function(error,rows,fields){
+            if (error){
+                console.log(error);
+            } else {
+                response.ok(rows,res);
+        }
+    });
+};
