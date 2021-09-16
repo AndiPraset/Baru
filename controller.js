@@ -64,3 +64,16 @@ exports.ubahsiswa = function(req,res){
         }
     });
 };
+
+//menghapus data berdasarkan id
+exports.hapussiswa = function(req,res){
+    var id = req.body.id_siswa;
+    connection.query('DELETE FROM siswa WHERE id_siswa=?',[id],
+    function (error,rows,fields){
+        if (error){
+            console.log(error);
+        } else {
+            res.json("Berhasil Hapus Data")
+        }
+    });
+};
