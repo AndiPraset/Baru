@@ -30,3 +30,37 @@ exports.tampilberdasarkanid=function(req,res){
         }
     });
 };
+
+//menambahkan data siswa
+exports.tambahsiswa = function(req,res){
+    var nama = req.body.nama;
+    var kelas = req.body.kelas;
+    var jurusan = req.body.jurusan;
+
+    connection.query('INSERT INTO siswa(nama,kelas,jurusan) VALUES(?,?,?)',
+    [nama,kelas,jurusan],
+        function (error,rows,fields){
+            if (error){
+                console.log(error);
+            } else {
+                res.json("Berhasil Menambahkan Data")
+            }
+        });
+};
+
+//mengubah data berdasarkan id
+exports.ubahsiswa = function(req,res){
+    var id = req.body.id;
+    var nama = req.body.nama;
+    var kelas = req.body.kelas;
+    var alamat = req.body.alamat;
+
+    connection.query('UPDATE siswa Set nama=?, kelas=?, alamat=? WHERE id=?',[nama,kelas,alamat,id],
+    function (error,rows,fields){
+        if (error){
+            console.log(error);
+        } else {
+            res.json("Berhasil Ubah Data")
+        }
+    });
+};
