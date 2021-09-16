@@ -50,12 +50,12 @@ exports.tambahsiswa = function(req,res){
 
 //mengubah data berdasarkan id
 exports.ubahsiswa = function(req,res){
-    var id = req.body.id;
+    var id = req.body.id_siswa;
     var nama = req.body.nama;
     var kelas = req.body.kelas;
-    var alamat = req.body.alamat;
+    var jurusan = req.body.jurusan;
 
-    connection.query('UPDATE siswa Set nama=?, kelas=?, alamat=? WHERE id=?',[nama,kelas,alamat,id],
+    connection.query('UPDATE siswa Set nama=?, kelas=?, jurusan=? WHERE id_siswa=?',[nama,kelas,jurusan,id],
     function (error,rows,fields){
         if (error){
             console.log(error);
