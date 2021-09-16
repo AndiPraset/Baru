@@ -77,3 +77,15 @@ exports.hapussiswa = function(req,res){
         }
     });
 };
+
+//menampilkan matapelajaran group
+exports.tampilgroupmatapelajaran = function(req, res){
+    connection.query('SELECT siswa.id_siswa, siswa.nama, siswa.kelas, siswa.jurusan, matapelajaran.mapel, matapelajaran.sks from krs JOIN matapelajaran JOIN siswa WHERE krs.id_mapel = matapelajaran.id_mapel AND krs.id_siswa = siswa.id_siswa ORDER BY siswa.id_siswa',
+    function (error,rows,fields){
+        if(error){
+            console.log(error);
+        } else {
+            response.oknested(rows, res);
+        }
+    });
+};
